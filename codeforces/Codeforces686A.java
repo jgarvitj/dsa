@@ -1,4 +1,4 @@
-package com.personal.dsa.gs.codeforces;
+package com.personal.dsa.codeforces;
 
 import java.io.*;
 import java.util.*;
