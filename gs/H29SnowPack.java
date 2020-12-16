@@ -1,4 +1,4 @@
-package com.dsa.gs;
+package com.personal.dsa.gs;
 /* Problem Name is &&& Snowpack &&& PLEASE DO NOT REMOVE THIS LINE. */
 
 /*

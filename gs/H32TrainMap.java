@@ -1,4 +1,4 @@
-package com.dsa.gs;
+package com.personal.dsa.gs;
 
 /**
  * Implement def shortestPath(self, fromStationName, toStationName)

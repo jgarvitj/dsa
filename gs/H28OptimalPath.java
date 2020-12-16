@@ -1,4 +1,4 @@
-package com.dsa.gs;
+package com.personal.dsa.gs;
 /*
 ** Instructions to candidate.
 **  1) You are an avid rock collector who lives in southern California. Some rare 

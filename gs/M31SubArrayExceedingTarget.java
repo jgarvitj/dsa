@@ -1,4 +1,4 @@
-package com.dsa.gs;
+package com.personal.dsa.gs;
 import java.io.*;
 import java.util.*;
 

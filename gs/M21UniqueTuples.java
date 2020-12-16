@@ -1,4 +1,4 @@
-package com.dsa.gs;
+package com.personal.dsa.gs;
 
 import java.util.HashSet;
 import java.util.Iterator;

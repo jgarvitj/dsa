@@ -1,4 +1,4 @@
-package com.dsa.gs;
+package com.personal.dsa.gs;
 // Given a a string of letters and a dictionary, the function longestWord should
 
 //     find the longest word or words in the dictionary that can be made from the letters

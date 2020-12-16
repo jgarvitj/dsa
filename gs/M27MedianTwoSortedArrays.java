@@ -1,4 +1,4 @@
-package com.dsa.gs;
+package com.personal.dsa.gs;
 
 public class M27MedianTwoSortedArrays {
 
