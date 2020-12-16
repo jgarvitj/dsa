@@ -15,6 +15,25 @@ public class BinaryStrSum {
 		}
 		return count;
 	}
+	
+	public static char[] findSumDigit(int count) {
+		char carry;
+		char digit;
+		char[] sumDigit = new char[2];
+		if (count / 2 == 1) {
+			carry = '1';
+		} else {
+			carry = '0';
+		}
+		if (count % 2 == 1) {
+			digit = '1';
+		} else {
+			digit = '0';
+		}
+		sumDigit[0] = carry;
+		sumDigit[1] = digit;
+		return sumDigit;
+	}
 
 	public static String bSum(String s1, String s2) {
 		StringBuilder sb = new StringBuilder();
@@ -22,47 +41,27 @@ public class BinaryStrSum {
 		int j = s2.length() - 1;
 		char carry = '0';
 		int count;
+		char[] sumDigit = new char[2];
 		while (i >= 0 && j >= 0) {
 			count = findCount(s1.charAt(i), s2.charAt(j), carry);
-			if (count / 2 == 1) {
-				carry = '1';
-			} else {
-				carry = '0';
-			}
-			if (count % 2 == 1) {
-				sb.insert(0, '1');
-			} else {
-				sb.insert(0, '0');
-			}
+			sumDigit = findSumDigit(count);
+			carry = sumDigit[0];
+			sb.insert(0, sumDigit[1]);
 			i--;
 			j--;
 		}
 		while (i >= 0) {
 			count = findCount(s1.charAt(i), '0', carry);
-			if (count / 2 == 1) {
-				carry = '1';
-			} else {
-				carry = '0';
-			}
-			if (count % 2 == 1) {
-				sb.insert(0, '1');
-			} else {
-				sb.insert(0, '0');
-			}
+			sumDigit = findSumDigit(count);
+			carry = sumDigit[0];
+			sb.insert(0, sumDigit[1]);
 			i--;
 		}
 		while (j >= 0) {
 			count = findCount('0', s2.charAt(j), carry);
-			if (count / 2 == 1) {
-				carry = '1';
-			} else {
-				carry = '0';
-			}
-			if (count % 2 == 1) {
-				sb.insert(0, '1');
-			} else {
-				sb.insert(0, '0');
-			}
+			sumDigit = findSumDigit(count);
+			carry = sumDigit[0];
+			sb.insert(0, sumDigit[1]);
 			j--;
 		}
 		if (carry == '1') {
