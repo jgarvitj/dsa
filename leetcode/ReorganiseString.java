@@ -14,7 +14,8 @@ public class ReorganiseString {
             count.put(c, count.getOrDefault(c, 0) + 1);
         }
         
-        PriorityQueue<Character> charHeap = new PriorityQueue<Character>((a, b)-> count.get(b)-count.get(a));
+        PriorityQueue<Character> charHeap = 
+        		new PriorityQueue<Character>((a, b)-> count.get(b)-count.get(a));
         charHeap.addAll(count.keySet());
         
         StringBuilder sb = new StringBuilder();
