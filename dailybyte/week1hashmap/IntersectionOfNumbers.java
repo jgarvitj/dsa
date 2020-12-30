@@ -1,4 +1,4 @@
-package com.personal.dsa.dailybyte;
+package com.personal.dsa.dailybyte.week1hashmap;
 
 import java.util.HashSet;
 

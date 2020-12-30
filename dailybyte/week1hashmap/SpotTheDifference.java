@@ -1,11 +1,11 @@
-package com.personal.dsa.dailybyte;
+package com.personal.dsa.dailybyte.week1hashmap;
 
 import java.util.HashMap;
 
 public class SpotTheDifference {
 
 	private static Character findDiff(String s1, String s2) {
-		// TODO Auto-generated method stub
+
 		HashMap<Character, Integer> freq = new HashMap<>();
 		for (Character c : s1.toCharArray()) {
 			freq.put(c, freq.getOrDefault(c, 0) + 1);

@@ -1,11 +1,11 @@
-package com.personal.dsa.dailybyte;
+package com.personal.dsa.dailybyte.week1hashmap;
 
 import java.util.HashMap;
 
 public class FirstUniqueCharacter {
 
 	private static int findFirstUniqueCharacter(String s) {
-		// TODO Auto-generated method stub
+
 		HashMap<Character, Integer> charCount = new HashMap<>();
 		for (Character c : s.toCharArray()) {
 			charCount.put(c, charCount.getOrDefault(c, 0) + 1);

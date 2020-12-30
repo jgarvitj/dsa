@@ -1,4 +1,7 @@
-package com.personal.dsa.dailybyte;
+package com.personal.dsa.dailybyte.week2linkedlist;
+
+import com.personal.dsa.dailybyte.ListLinked;
+import com.personal.dsa.dailybyte.ListNode;
 
 public class MergeLinkedList {
 

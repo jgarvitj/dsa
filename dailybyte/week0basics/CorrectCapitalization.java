@@ -1,4 +1,4 @@
-package com.personal.dsa.dailybyte;
+package com.personal.dsa.dailybyte.week0basics;
 
 public class CorrectCapitalization {
 
