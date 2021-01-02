@@ -20,11 +20,15 @@ class TreeNode {
 	}
 }
 
-public class CheckBalancedBinaryTree110 {
+public class _110CheckBalancedBinaryTree {
 
 //}
 //
 //class Solution {
+	/*
+	 * all subtrees should be balanced
+	 * return -1 if not
+	 */
 
 	private static int getHt(TreeNode root) {
 		if (root == null) {

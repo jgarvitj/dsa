@@ -1,6 +1,6 @@
 package com.personal.dsa.leetcode;
 
-public class BestTimeToBuyAndSellStock121 {
+public class _121BestTimeToBuyAndSellStock {
 
 //}
 //class Solution {
