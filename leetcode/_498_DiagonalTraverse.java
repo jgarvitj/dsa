@@ -1,6 +1,6 @@
 package com.personal.dsa.leetcode;
 
-public class DiagonalTraverse498 {
+public class _498_DiagonalTraverse {
 
 //}
 //class Solution {

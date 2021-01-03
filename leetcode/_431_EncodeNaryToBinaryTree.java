@@ -33,7 +33,7 @@ class TreeNode {
 	}
 }
 
-public class EncodeNaryToBinaryTree431 {
+public class _431_EncodeNaryToBinaryTree {
 
 //}
 

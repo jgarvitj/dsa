@@ -2,8 +2,14 @@ package com.personal.dsa.leetcode;
 
 import java.util.PriorityQueue;
 
-public class FindMedianFromDataStream295 {
+public class _295_FindMedianFromDataStream {
 
+	/*
+	 * maintain 2 heaps
+	 * first half in max heap
+	 * and snd in min heap
+	 * median is the top of both heaps
+	 */
 //}
 //class MedianFinder {
 
@@ -11,7 +17,7 @@ public class FindMedianFromDataStream295 {
 	static PriorityQueue<Integer> maxH = new PriorityQueue<>((a, b) -> b - a);
 	static PriorityQueue<Integer> minH = new PriorityQueue<>(); // by default min heap
 
-	public FindMedianFromDataStream295() {
+	public _295_FindMedianFromDataStream() {
 
 		maxH.clear();
 		minH.clear();

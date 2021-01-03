@@ -5,8 +5,12 @@ package com.personal.dsa.leetcode;
  * O(n)
  */
 
-public class IncreasingTripletSequence334 {
+public class _334_IncreasingTripletSequence {
 
+	/*
+	 * maintain smallest and snd smallest
+	 * brute force
+	 */
 //}
 //class Solution {
 	public boolean increasingTriplet(int[] nums) {

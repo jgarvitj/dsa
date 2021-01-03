@@ -2,8 +2,11 @@ package com.personal.dsa.leetcode;
 
 import java.util.Stack;
 
-public class ValidParanthesis20 {
+public class _20_ValidParanthesis {
 
+	/*
+	 * stack
+	 */
 //}
 //class Solution {
 	public boolean isValid(String s) {

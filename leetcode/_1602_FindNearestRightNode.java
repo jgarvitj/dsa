@@ -8,11 +8,16 @@ import java.util.ArrayDeque;
  * TreeNode(int val, TreeNode left, TreeNode right) { this.val = val; this.left
  * = left; this.right = right; } }
  */
-public class FindNearestRightNode1602 {
+public class _1602_FindNearestRightNode {
 
 //}
 //
 //class Solution {
+	
+	/*
+	 * bst
+	 * level order traversal
+	 */
 	public TreeNode findNearestRightNode(TreeNode root, TreeNode u) {
 		ArrayDeque<TreeNode> cur = new ArrayDeque<>();
 		ArrayDeque<TreeNode> nxt = new ArrayDeque<>();
