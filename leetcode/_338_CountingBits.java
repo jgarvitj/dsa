@@ -1,6 +1,6 @@
 package com.personal.dsa.leetcode;
 
-public class CountingBits338 {
+public class _338_CountingBits {
 
 //}
 //class Solution {

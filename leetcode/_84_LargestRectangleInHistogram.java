@@ -2,8 +2,14 @@ package com.personal.dsa.leetcode;
 
 import java.util.Stack;
 
-public class LargestRectangleInHistogram84 {
+public class _84_LargestRectangleInHistogram {
 
+	/*
+	 * stack
+	 * put in stack if bar is larger or empty(put -1 to avoid checking for empty stack)
+	 * keep poping if else, -1 at base of stack shall help here as well
+	 */
+	
 //}
 //public class Solution {
 	public int largestRectangleArea(int[] heights) {

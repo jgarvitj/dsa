@@ -6,7 +6,7 @@ package com.personal.dsa.leetcode;
  * 	no point in moving pointer with greater ht(consider both cases)
  * O(n) time O(1) space
  */
-public class _11ContainerWithMostWater {
+public class _11_ContainerWithMostWater {
 //}
 //class Solution {
 	public int maxArea(int[] height) {

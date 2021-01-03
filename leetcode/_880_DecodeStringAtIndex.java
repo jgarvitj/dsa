@@ -1,6 +1,6 @@
 package com.personal.dsa.leetcode;
 
-public class DecodeStringAtIndex880 {
+public class _880_DecodeStringAtIndex {
 
 //}
 //	class Solution {

@@ -20,7 +20,7 @@ class TreeNode {
 	}
 }
 
-public class _110CheckBalancedBinaryTree {
+public class _110_CheckBalancedBinaryTree {
 
 //}
 //

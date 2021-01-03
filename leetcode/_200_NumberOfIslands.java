@@ -1,10 +1,14 @@
 package com.personal.dsa.leetcode;
 
-public class _200NumberOfIslands {
+public class _200_NumberOfIslands {
 
 //}
 //class Solution {
 
+	/*
+	 * dfs
+	 * increase count each time '1' is encountered
+	 */
 	public static void dfs(char[][] grid, int r, int c) {
 		int n = grid.length;
 		int m = grid[0].length;
