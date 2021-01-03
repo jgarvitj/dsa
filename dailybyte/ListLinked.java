@@ -15,6 +15,7 @@ public class ListLinked {
 			ListNode p = new ListNode(x[i]);
 			temp.next = p;
 			temp = p;
+			temp.next = null;
 		}
 	}
 }
