@@ -1,7 +1,11 @@
 package com.personal.dsa.leetcode;
 
-public class ReachANumber754 {
+public class _754_ReachANumber {
 
+	/*
+	 * Implementation
+	 * think of possible cases before solving
+	 */
 //}
 //class Solution {
 	public int reachNumber(int target) {

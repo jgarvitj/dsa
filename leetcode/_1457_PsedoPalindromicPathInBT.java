@@ -23,7 +23,7 @@ class TreeNode {
 
 }
 
-public class PsedoPalindromicPathInBT1457 {
+public class _1457_PsedoPalindromicPathInBT {
 
 //}
 

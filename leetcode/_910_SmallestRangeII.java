@@ -2,7 +2,7 @@ package com.personal.dsa.leetcode;
 
 import java.util.Arrays;
 
-public class SmallestRangeII910 {
+public class _910_SmallestRangeII {
 
 //}
 //class Solution {

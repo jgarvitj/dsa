@@ -21,7 +21,7 @@ class ListNode {
 	}
 }
 
-public class PlusOneLinkedList369 {
+public class _369_PlusOneLinkedList {
 
 //}
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class PartitionLabels763 {
+public class _763_PartitionLabels {
 
 //}
 //

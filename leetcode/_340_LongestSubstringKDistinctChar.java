@@ -2,7 +2,7 @@ package com.personal.dsa.leetcode;
 
 import java.util.HashMap;
 
-public class LongestSubstringKDistinctChar340 {
+public class _340_LongestSubstringKDistinctChar {
 
 //}
 //class Solution {

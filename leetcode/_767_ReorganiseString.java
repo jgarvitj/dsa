@@ -3,7 +3,7 @@ package com.personal.dsa.leetcode;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
-public class ReorganiseString {
+public class _767_ReorganiseString {
 
 //}
 //class Solution {

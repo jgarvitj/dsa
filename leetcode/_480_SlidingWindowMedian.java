@@ -3,7 +3,7 @@ package com.personal.dsa.leetcode;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-public class SlidingWindowMedian480 {
+public class _480_SlidingWindowMedian {
 
 //}
 //class Solution {

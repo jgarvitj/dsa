@@ -2,7 +2,7 @@ package com.personal.dsa.leetcode;
 
 import java.util.PriorityQueue;
 
-public class NextGreaterElementIII556 {
+public class _556_NextGreaterElementIII {
 
 //}
 //class Solution {

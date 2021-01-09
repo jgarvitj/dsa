@@ -2,8 +2,11 @@ package com.personal.dsa.leetcode;
 
 import java.util.PriorityQueue;
 
-public class MinNumberOfRefuelingSteps871 {
+public class _871_MinNumberOfRefuelingSteps {
 
+	/*
+	 * greedy
+	 */
 //}
 //class Solution {
 

@@ -5,7 +5,7 @@ package com.personal.dsa.leetcode;
  * O(n) space
  * two arrays storing leftMax and rightMax
  */
-public class TrappingRainWater42 {
+public class _42_TrappingRainWater {
 
 //}
 //class Solution {
