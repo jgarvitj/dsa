@@ -5,7 +5,7 @@ import com.personal.dsa.dailybyte.ListNode;
 
 public class RemoveValue {
 
-	private static ListNode remove(ListNode head, int x) {
+	public static ListNode remove(ListNode head, int x) {
 		ListNode dummy = new ListNode();
 		dummy.next = head;
 		ListNode it = dummy;

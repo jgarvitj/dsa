@@ -5,7 +5,7 @@ import com.personal.dsa.dailybyte.ListNode;
 
 public class MergeLinkedList {
 
-	private static ListNode mergeList(ListNode x1, ListNode x2) {
+	public static ListNode mergeList(ListNode x1, ListNode x2) {
 
 		ListNode head = new ListNode(-1);
 		ListNode temp = head;
