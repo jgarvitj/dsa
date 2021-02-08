@@ -26,6 +26,7 @@ public class _1335_MinDifficultyOfAJobSchedule {
 		int maxSeg = 0;
 
 		if (d == 1) {
+			
 			for (int i = index; i < jobDifficulty.length; i++) {
 				maxSeg = Math.max(maxSeg, jobDifficulty[i]);
 			}
@@ -54,7 +55,6 @@ public class _1335_MinDifficultyOfAJobSchedule {
 
 	public int minDifficulty(int[] jobDifficulty, int d) {
 
-		// HashMap<Pair, Integer> minDiff = new HashMap<>();
 		int n = jobDifficulty.length;
 		int dp[][] = new int[n][d];
 
