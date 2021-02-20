@@ -1,0 +1,44 @@
+class Solution {
+    public int myAtoi(String s) {
+        
+        int x = 0;
+        boolean nextDigReqd = false;
+        boolean isNeg = false;
+        
+        for(char c : s.toCharArray()) {
+            if(nextDigReqd && (c < '0' || c >'9')) {
+                if(isNeg) {
+                    return -1*x;
+                }
+                return x;
+            }
+            if(c >= '0' && c <= '9') {
+                long temp = x;
+                temp = temp*10 + c - '0';
+                x = x*10 + c - '0';
+                if(temp != (long)x && !isNeg) {
+                    return Integer.MAX_VALUE; 
+                }
+                if(temp != (long)x && isNeg) {
+                    return Integer.MIN_VALUE; 
+                }
+                nextDigReqd = true;
+            }
+            else if(c == ' ') {
+                continue;
+            }
+            else if(c == '-' || c == '+') {
+                isNeg = (c == '-') ? true : false;
+                nextDigReqd = true;
+            }
+            else {
+                return 0;
+            }
+        }
+        if(isNeg) {
+            return -1*x;
+        }
+        return x;
+        
+    }
+}
