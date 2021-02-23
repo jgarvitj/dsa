@@ -2,7 +2,7 @@ package com.personal.dsa.dailybyte.week2linkedlist;
 
 import com.personal.dsa.dailybyte.ListNode;
 
-public class CheckCycle {
+public class ContainsCycle {
 
 	public static boolean checkCycleLL(ListNode x) {
 		ListNode slow = x;

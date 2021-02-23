@@ -22,8 +22,11 @@ public class Controller {
 		printLL(result);
 		
 		//check cycle
-		ListNode x3 = new ListLinked(new int[] {1, 2, 3, 1}).head;
-		System.out.println(CheckCycle.checkCycleLL(x3));
+		ListNode x3 = new ListLinked(new int[] {1, 2, 3}).head;
+		x3.next.next.next = x3;
+		System.out.println(ContainsCycle.checkCycleLL(x3));
+		
+		System.out.println(CycleOrigin.getCycleOrigin(x3).val);
 
 	}
 
