@@ -1,0 +1,57 @@
+class Solution {
+    
+    class Pair {
+        
+        int open;
+        int close;
+        Pair(int o, int c) {
+            this.open = o;
+            this.close = c;
+        } 
+        
+    }
+    
+    HashMap<Pair, List<String>> hm = new HashMap<>();
+    
+    private List<String> getPer(int open, int close) {
+        
+        if(open == 0) {
+            List<String> per = new ArrayList<>();
+            StringBuilder sb = new StringBuilder();
+            while(close > 0) {
+                close--;
+                sb.append(')');
+            }
+            per.add(sb.toString());
+            return per;
+        }
+        
+        Pair p = new Pair(open, close);
+        if(hm.containsKey(p) ) {
+            return hm.get(p);
+        }
+        
+        List<String> getNextPerOpen = getPer(open-1, close);
+        for(int i = 0; i < getNextPerOpen.size(); i++) {
+            getNextPerOpen.set(i, '(' + getNextPerOpen.get(i));
+        }
+        
+        if(open == close) {
+            hm.put(p, getNextPerOpen);
+            return getNextPerOpen;
+        }
+        
+        List<String> getNextPerClose = getPer(open, close-1);
+        for(int i = 0; i < getNextPerClose.size(); i++) {
+            getNextPerClose.set(i, ')' + getNextPerClose.get(i));
+        }
+        getNextPerOpen.addAll(getNextPerClose);
+        hm.put(p, getNextPerOpen);
+        return getNextPerOpen;
+        
+    }
+    
+    public List<String> generateParenthesis(int n) {
+        return getPer(n, n); 
+    }
+}
