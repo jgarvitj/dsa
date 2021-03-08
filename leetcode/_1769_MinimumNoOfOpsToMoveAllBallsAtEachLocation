@@ -1,0 +1,36 @@
+class Solution {
+    public int[] minOperations(String boxes) {
+        
+        int n = boxes.length();
+        
+        int[] rtCost = new int[n];
+        int[] ltCost = new int[n];
+        int[] ans = new int[n];
+        
+        if(n < 2) {
+            return ans;   
+        }
+        
+        //right
+        int ballsToRt = boxes.charAt(n-1) - '0';
+        rtCost[n-1] = 0;
+        for(int i = n-2; i >= 0; i--) {
+            rtCost[i] = ballsToRt + rtCost[i+1];
+            ballsToRt += boxes.charAt(i) - '0';
+        }
+        
+        //left
+        int ballsToLt = boxes.charAt(0) - '0';
+        ltCost[0] = 0;
+        for(int i = 1; i < n; i++) {
+            ltCost[i] = ballsToLt + ltCost[i-1];
+            ballsToLt +=  boxes.charAt(i) - '0';
+        }
+        
+        for(int i = 0; i < n; i++) {
+            ans[i] = ltCost[i] + rtCost[i];
+        }
+        
+        return ans;
+    }
+}
