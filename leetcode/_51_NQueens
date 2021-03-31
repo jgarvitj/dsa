@@ -1,0 +1,64 @@
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        
+        List<List<String>> possibleSol = new ArrayList<>();
+        
+        List<String> sol = new ArrayList<>();
+        
+        backtrack(0, n, possibleSol, sol);
+        
+        //mirror image
+        //remove common
+        
+        return possibleSol;
+        
+    }
+    
+    public void backtrack(int row, int n, List<List<String>> possibleSol, List<String> sol) {
+        
+        if(sol.size() == n) {
+            possibleSol.add(new ArrayList<>(sol));
+            return;
+        }
+        
+        // for row : check all columns 
+        for(int i = 0; i < n; i++) {
+            if(check(sol, i, row, n)) {
+                StringBuilder rowStr = new StringBuilder();
+                for(int j = 0; j < i; j++) {
+                    rowStr.append('.');
+                }
+                rowStr.append('Q');
+                for(int j = i+1; j < n; j++) {
+                    rowStr.append('.');
+                }
+                sol.add(rowStr.toString());
+                backtrack(row+1, n, possibleSol, sol);
+                sol.remove(row);
+            }
+        }
+        
+    }
+    
+    public boolean check(List<String> sol, int col, int row, int n) {
+        
+        //check for the same column
+        for(int i = 0; i < row; i++) {
+            if(sol.get(i).charAt(col) == 'Q') {
+                return false;
+            }
+            int digA = (row + col) - i;
+            if(digA >= 0 && digA < n && sol.get(i).charAt(digA) == 'Q') {
+                return false;
+            }
+            int digB = i - (row - col);
+            if(digB >= 0 && digB < n && sol.get(i).charAt(digB) == 'Q') {
+                return false;
+            }
+        }
+        
+        return true;
+        
+    }
+    
+}
