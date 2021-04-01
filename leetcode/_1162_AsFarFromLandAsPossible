@@ -1,0 +1,94 @@
+class Solution {
+    
+    class Pair {
+        
+        int row;
+        int col;
+        
+        public Pair(int r, int c) {
+            this.row = r;
+            this.col = c;
+        }
+        
+    }
+    
+    public int maxDistance(int[][] grid) {
+        int n = grid.length;
+        if(n < 2) {
+            return -1;
+        }
+        
+        int maxDist = 0;
+        Queue<Pair> q = new LinkedList<>();
+        
+        boolean landExists = false;
+        boolean waterExists = false;
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                if(grid[i][j] == 1) {
+                    q.add(new Pair(i, j));
+                    landExists = true;
+                }
+                else {
+                    waterExists = true;
+                }
+            }
+        }
+        if(!landExists || !waterExists) {
+            return -1;
+        }
+        
+        while(!q.isEmpty()) {
+            Pair p = q.poll();
+            int r = p.row;
+            int c = p.col;
+            if(grid[r][c] == 1 || grid[r][c] < 0) {
+                if(visit(r, c, r, c+1, n, grid)) {
+                    q.add(new Pair(r, c+1));
+                }
+                if(visit(r, c, r+1, c, n, grid)) {
+                    q.add(new Pair(r+1, c));
+                }
+                if(visit(r, c, r, c-1, n, grid)) {
+                    q.add(new Pair(r, c-1));
+                }
+                if(visit(r, c, r-1, c, n, grid)) {
+                    q.add(new Pair(r-1, c));
+                }                    
+            }
+            
+            
+        }
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                maxDist = Math.min(maxDist, grid[i][j]);
+            }
+        }
+        if(maxDist < 0) {
+            return Math.abs(maxDist);
+        }
+        return -1;
+        
+    }
+    
+    public static boolean visit(int rs, int cs, int rd, int cd, int n, int[][] grid) {
+        if(rd < 0 || cd < 0 || cd >= n || rd >= n) {
+            return false;
+        }
+        if(grid[rd][cd] == 1) {
+            return false;
+        }
+        if(grid[rs][cs] == 1 && grid[rd][cd] != -1) {
+            grid[rd][cd] = -1;
+            return true;
+        }
+        if(grid[rs][cs] == 1) {
+            return false;
+        }
+        if(grid[rd][cd] < grid[rs][cs] - 1 || grid[rd][cd] == 0) {
+            grid[rd][cd] = grid[rs][cs] - 1;
+            return true;
+        }
+        return false;
+    }
+}
