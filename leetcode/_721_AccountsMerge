@@ -1,0 +1,52 @@
+class Solution {
+    public List<List<String>> accountsMerge(List<List<String>> accounts) {
+        HashMap<String, String> emailName = new HashMap<>();
+        HashMap<String, ArrayList<String>> graph = new HashMap<>();
+        List<List<String>> mergedAcc = new ArrayList<>();
+        List<String> emailList = new ArrayList<>();
+        
+        //making the graph
+        for(List<String> acc : accounts) {
+            String name = acc.get(0);
+            for(int i = 1; i < acc.size(); i++) {
+                //2 directional graph
+                //each email pointing to 1st email and 1st email pointing to each email
+                graph.computeIfAbsent(acc.get(i),x -> new ArrayList<String>()).add(acc.get(1));
+                graph.computeIfAbsent(acc.get(1),x -> new ArrayList<String>()).add(acc.get(i));
+                emailName.put(acc.get(i), name);
+            }
+        }
+        
+        //parsing the graph
+        HashSet<String> isVis = new HashSet<>();
+        
+        for(String email : graph.keySet()) {
+            if(!isVis.contains(email)) {
+                isVis.add(email);
+                Stack<String> stack = new Stack<>();
+                stack.push(email);
+                emailList.clear();
+                
+                while(!stack.isEmpty()) {
+                    String e = stack.pop();
+                    emailList.add(e);
+                    
+                    for(String edgesOfE : graph.get(e)) {
+                        if(!isVis.contains(edgesOfE)) {
+                            stack.push(edgesOfE);
+                            isVis.add(edgesOfE);
+                        }
+                    }
+                }
+                
+                //adding the merged accounts
+                Collections.sort(emailList);
+                emailList.add(0, emailName.get(email));
+                mergedAcc.add(new ArrayList<>(emailList));
+                emailList.clear();
+            }
+        }
+        return mergedAcc;
+        
+    }
+}
