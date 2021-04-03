@@ -1,0 +1,57 @@
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        
+        //courses are labelled 0 to numcourses - 1
+        //if they were not use a hashmap to index the courses and make the graph
+        List<List <Integer>> inEdge = new ArrayList<>();
+        List<List <Integer>> outEdge = new ArrayList<>();
+        
+        //adding empty list for each course to contain incoming and outgoing edges
+        for(int i = 0; i < numCourses; i++) {
+            inEdge.add(new ArrayList<>());
+            outEdge.add(new ArrayList<>());
+        }
+        
+        //filling the inEdge and outEdge graph
+        for(int i = 0; i < prerequisites.length; i++) {
+            inEdge.get(prerequisites[i][1]).add(prerequisites[i][0]);
+            outEdge.get(prerequisites[i][0]).add(prerequisites[i][1]);
+        }
+        
+        //parsing the graph
+        int[] isVis = new int[numCourses];
+        Queue<Integer> q = new LinkedList<>();
+        
+        for(int i = 0; i < numCourses; i++) {
+            //select an course(vertex) which has no prereq left and is not completed(visited)
+            if(inEdge.get(i).size() == 0 && isVis[i] == 0) {
+                isVis[i] = 1;
+                q.add(i);
+                while(!q.isEmpty()) {
+                    int prereq = q.poll();
+                    for(int j = 0; j < outEdge.get(prereq).size(); j++) {
+                        int course = outEdge.get(prereq).get(j);
+                        if(isVis[course] == 1) {
+                            return false;
+                        }
+                        inEdge.get(course).remove(new Integer(prereq));
+                        if(inEdge.get(course).size() == 0 && isVis[course] == 0) {
+                            isVis[course] = 1;
+                            q.add(course);
+                        }
+                    }
+                }
+            }
+        }
+        
+        for(int i = 0; i < numCourses; i++) {
+            if(isVis[i] == 0) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    
+}
