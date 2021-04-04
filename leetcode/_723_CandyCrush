@@ -1,0 +1,128 @@
+class Solution {
+    public int[][] candyCrush(int[][] board) {
+        
+        //parse using 2 pointers adj to each other
+            //make consecutive same -ve
+        //parse from buttom using 2 pointers and rearrange for next state
+        //keep calling the fn till no combination left
+        
+        boolean isStable = true;
+        int n = board.length;
+        int m = 0;
+        int a, b;
+        boolean isTwo;
+        boolean isThree;
+        if(n > 0) {
+            m = board[0].length;
+        }
+        for(int i = 0; i < n; i++) {
+            a = 0;
+            b = 1;
+            isTwo = false;
+            isThree = false;
+            while(b < m) {
+                if(Math.abs(board[i][a]) == Math.abs(board[i][b])) {
+                    if(isTwo) {
+                        board[i][b] = -1*Math.abs(board[i][b]);
+                        //convert the remaining 2 -ve
+                        if(!isThree) {
+                            board[i][a] = -1*Math.abs(board[i][a]);
+                            board[i][a+1] = -1*Math.abs(board[i][a+1]);
+                        }
+                        isThree = true;
+                        b++;
+                    }
+                    else {
+                        isTwo = true;
+                        b++;
+                    }
+                }
+                else {
+                    isTwo = false;
+                    isThree = false;
+                    a = b;
+                    b++;
+                }
+            }
+        }
+        for(int i = 0; i < m; i++) {
+            a = 0;
+            b = 1;
+            isTwo = false;
+            isThree = false;
+            while(b < n) {
+                if(Math.abs(board[a][i]) == Math.abs(board[b][i])) {
+                    if(isTwo) {
+                        board[b][i] = -1*Math.abs(board[b][i]);
+                        //convert the remaining 2 -ve
+                        if(!isThree) {
+                            board[a][i] = -1*Math.abs(board[a][i]);
+                            board[a+1][i] = -1*Math.abs(board[a+1][i]);
+                        }
+                        isThree = true;
+                        b++;
+                    }
+                    else {
+                        isTwo = true;
+                        b++;
+                    }
+                }
+                else {
+                    isTwo = false;
+                    isThree = false;
+                    a = b;
+                    b++;
+                }
+            }
+        }
+        
+        //collapse
+        
+        //for each column
+        for(int i = 0; i < m; i++) {
+            a = n-1;
+            b = n-2;
+            boolean doesCollapse = false;
+            while(b >= 0) {
+                if(board[a][i] < 0) {
+                    isStable = false;
+                    doesCollapse = true;
+                }
+                else {
+                    a--;
+                    if(a == b) {
+                        b = a-1;
+                    }
+                }
+                if(doesCollapse) {
+                    while(b >= 0) {
+                        if(board[b][i] < 0) {
+                            b--;
+                        }
+                        else {
+                            board[a][i] = board[b][i];
+                            //cell marked as collapsed
+                            board[b][i] = -1*board[b][i];
+                            doesCollapse = false;
+                            a--;
+                            b--;
+                            break;
+                        }
+                    }
+                }
+            }
+            for(int j = 0; j < n; j++) {
+                if(board[j][i] < 0) {
+                    board[j][i] = 0;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        if(isStable) {
+            return board;
+        }
+        return candyCrush(board);
+    }
+}
