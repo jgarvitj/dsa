@@ -1,0 +1,115 @@
+class Solution {
+    public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
+        
+        HashMap<String, Integer> hm = new HashMap<>();
+        int index = 0;
+        
+        //parse equations and find vertexes and map each vertex to an int
+        for(List<String> eq : equations) {
+            if(!hm.containsKey(eq.get(0))) {
+                hm.put(eq.get(0), index);
+                index++;
+            }
+            if(!hm.containsKey(eq.get(1))) {
+                hm.put(eq.get(1), index);
+                index++;
+            }
+            
+        }
+        
+        //construct an adj matrix
+        int varNum = hm.size();
+        double[][] graph = new double[varNum][varNum];
+        
+        //initialize with (i,j) -1 if i != j else 1
+        for(int i = 0; i < varNum; i++) {
+            for(int j = 0; j < varNum; j++) {
+                if(i == j) {
+                    graph[i][j] = 1;
+                }
+                else {
+                    graph[i][j] = -1;
+                }
+            }
+        }
+        //fill the graph parsing equations and values
+        //if (i,j) is x -> (j,i) is 1/x
+        for(int i = 0; i < equations.size(); i++) {
+            String a  = equations.get(i).get(0);
+            String b = equations.get(i).get(1);
+            
+            graph[hm.get(a)][hm.get(b)] = values[i];
+            graph[hm.get(b)][hm.get(a)] = 1/values[i];
+        }
+        
+        //if (i,j)=x and (j,k)=y exist, then update (i,k) as x*y and also (k,i)
+        
+        
+        //parse the queries for answers
+        int qNum = queries.size();
+        double[] ans = new double[qNum];
+        index = 0;
+
+        for(List<String> q : queries) {
+            if(hm.containsKey(q.get(0)) && hm.containsKey(q.get(1))) {
+                if(graph[hm.get(q.get(0))][hm.get(q.get(1))] != -1) {
+                    ans[index] = graph[hm.get(q.get(0))][hm.get(q.get(1))];    
+                }
+                else {
+                    //(query -> (a,b))
+                    int a = hm.get(q.get(0));
+                    int b = hm.get(q.get(1));
+                    //parse
+                    Stack<Integer> stack = new Stack<>();
+                    HashSet<Integer> isVis = new HashSet<>();
+                    isVis.add(a);
+                    //for a -> for each vertex if graph[a][v] != -1
+                    for(int i = 0; i < varNum; i++) {
+                        if(i == a) {
+                            continue;
+                        }
+                        if(graph[a][i] != -1) {
+                            stack.push(i);
+                            isVis.add(i);
+                        }
+                    }
+                    
+                    //add to stack and isVis
+                    //keep popping from stack, updating the graph and pushing !isVis to stack,
+                    while(!stack.isEmpty()) {
+                        int i = stack.pop();
+                        for(int j = 0; j < varNum; j++) {
+                            if(i == j || graph[i][j] == -1) {
+                                continue;
+                            }
+                            //stop when you find b
+                            if(j == b) {
+                                graph[a][b] = graph[a][i]*graph[i][j];
+                                ans[index] = graph[a][b];
+                                graph[b][a] = 1/graph[a][b];
+                                isVis.clear();
+                                stack.clear();
+                                break;
+                            }
+                            else if(!isVis.contains(j)) {
+                                isVis.add(j);
+                                stack.push(j);
+                                graph[a][j] = graph[a][i]*graph[i][j];
+                                graph[j][a] = 1/graph[a][j];
+                            }
+                        }
+                    }
+                    if(graph[a][b] == -1) {
+                        ans[index] = -1;
+                    }
+                }
+                
+            }
+            else {
+                ans[index] = -1.0;
+            }
+            index++;
+        }
+        return ans;
+    }
+}
