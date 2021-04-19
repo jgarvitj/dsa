@@ -1,0 +1,41 @@
+class Solution {
+    public boolean isRobotBounded(String instructions) {
+        
+        int rot = 2;
+        int dispx = 0;
+        int dispy = 0;
+        for(Character c : instructions.toCharArray()) {
+            if(c == 'L') {
+                rot--;
+                if(rot == -1) {
+                    rot = 3;
+                }
+            }
+            else if(c == 'R') {
+                rot++;
+                if(rot == 4)
+                    rot = 0;
+            }
+            else {
+                int x = rot%4;
+                if(rot%4 == 0) {
+                    dispy--;
+                } else if(rot%4 == 1) {
+                    dispx--;
+                } else if(rot%4 == 2) {
+                    dispy++;
+                } else {
+                    dispx++;
+                }
+            }
+        }
+        if(rot%4 != 2) {
+            return true;
+        }
+        
+        if(dispx == 0 && dispy == 0) {
+            return true;
+        }
+        return false;
+    }
+}

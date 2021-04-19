@@ -1,0 +1,92 @@
+class Solution {
+    
+    class TrieNode {
+        
+        HashMap<Character, TrieNode> children = new HashMap<>();
+        boolean isEnd;
+        
+        public TrieNode() {
+            
+            this.isEnd = false;
+        }
+        
+    }
+    
+    class Trie {
+        
+        TrieNode root;
+        
+        public Trie() {
+            root = new TrieNode();
+        }
+        
+        public void add(String word) {
+            
+            TrieNode cur = root;
+            
+            for(char c : word.toCharArray()) {
+                if(cur.children.containsKey(c)) {
+                    cur = cur.children.get(c);
+                }
+                else {
+                    TrieNode newNode = new TrieNode();
+                    cur.children.put(c, newNode);
+                    cur = cur.children.get(c);
+                }
+            }
+            cur.isEnd = true;
+        }
+        
+        public boolean canBreak(String s, int index, Boolean[] canBreakAtIndex, int count) {
+            if(index == s.length()) {
+                return count > 1;
+            }
+            
+            if(canBreakAtIndex[index] != null) {
+                return canBreakAtIndex[index];
+            }
+            
+            TrieNode cur = root;
+            int i = index;
+            
+            while(i < s.length() && cur != null && cur.children.containsKey(s.charAt(i))) {
+                cur = cur.children.get(s.charAt(i));
+                
+                if(cur.isEnd && canBreak(s, i+1, canBreakAtIndex, count + 1)) {
+                    canBreakAtIndex[index] = true;
+                    return true;
+                }
+                i++;
+            }
+            canBreakAtIndex[index] = false;
+            return false;
+        }
+        
+    }
+    
+    public List<String> findAllConcatenatedWordsInADict(String[] words) {
+        
+        //start the trie tree with node shall point to first char of words       
+        Trie tree = new Trie();
+        
+        //insert -> in trie
+        for(String s : words) {
+            tree.add(s);
+        }
+        
+        //check if the word can be broken down into already existing words and add to result if true
+        List<String> result = new ArrayList<>();
+        for(String s : words) {
+            
+            if(s.length() == 0)
+                continue;
+            
+            Boolean[] canBreakAtIndex = new Boolean[s.length()];
+            
+            if(tree.canBreak(s, 0, canBreakAtIndex, 0)) {
+                result.add(s);
+            }
+        }
+        return result;
+    }
+}
