@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        
+
+        List<Integer> parser = new ArrayList<>();
+        List<Integer> copy = new ArrayList<>();
+        List<List<Integer>> pascalArr = new ArrayList<>();
+
+        for(int i = 0; i < numRows; i++) {
+            parser.add(0, 1);
+            for(int j = 1; j < i; j++) {
+                parser.set(j, parser.get(j) + parser.get(j+1));
+            }
+            copy.addAll(parser);
+            pascalArr.add(copy);
+            copy = new ArrayList<>();
+        }
+        return pascalArr;
+
+    }
+}
